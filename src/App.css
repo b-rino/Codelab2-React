@@ -1,0 +1,14 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  color: navy;
+}
+
+body {
+  background-color: beige;
+}
+
+ul {
+  color: darkorchid;
+}
