@@ -4,11 +4,13 @@
   gap: 2rem;
   align-items: flex-start;
   justify-content: center;
+  padding: 2rem;
+  min-height: 100vh;
 }
 
 .page-title {
   text-align: center;
-  background-color: whitesmoke;
+  background-color: beige;
   font-size: 3rem;
   margin: 0;
   padding: 1rem 0;
@@ -32,9 +34,36 @@
   margin-bottom: 1rem;
   padding: 0.5rem;
   border-bottom: 1px solid #eee;
-  color: darkorchid;
 }
 
 .trip-item:hover {
-  background-color: #f9f9f9;
+  background-color: beige;
+}
+
+.trip-details {
+  padding: 1rem;
+}
+
+.packing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.packing-table th,
+.packing-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.packing-table th {
+  background-color: #f2f2f2;
+}
+
+.packing-summary {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-top: 2px solid #ddd;
+  font-weight: bold;
 }

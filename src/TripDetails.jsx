@@ -13,6 +13,24 @@ export default function TripDetails({ tripId }) {
 
   if (!trip) return <p>Loading trip details...</p>;
 
+  let totalWeight = 0;
+  let totalCheapestPrice = 0;
+
+  if (trip.packingItems && trip.packingItems.length > 0) {
+    totalWeight = trip.packingItems.reduce(
+      (sum, item) => sum + item.weightInGrams * item.quantity,
+      0
+    );
+  }
+
+  totalCheapestPrice = trip.packingItems.reduce((sum, item) => {
+    if (item.buyingOptions && item.buyingOptions.length > 0) {
+      const cheapest = Math.min(...item.buyingOptions.map((opt) => opt.price));
+      return sum + cheapest;
+    }
+    return sum;
+  }, 0);
+
   return (
     <div id="tripDetails">
       <h2>{trip.name}</h2>
@@ -32,6 +50,50 @@ export default function TripDetails({ tripId }) {
         Telefon: {trip.guide.phone} <br />
         Erfaring: {trip.guide.yearsOfExperience} år
       </p>
+
+      {trip.packingItems && trip.packingItems.length > 0 && (
+        <>
+          <h3>Packing Items</h3>
+          <table className="packing-table">
+            <thead>
+              <tr>
+                <th>Item name</th>
+                <th>Weight (g)</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Buying options</th>
+              </tr>
+            </thead>
+            <tbody>
+              {trip.packingItems.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.name}</td>
+                  <td>{item.weightInGrams}</td>
+                  <td>{item.quantity}</td>
+                  <td>{item.description}</td>
+                  <td>{item.category}</td>
+                  <td>
+                    {item.buyingOptions.map((option, i) => (
+                      <div key={i}>
+                        {option.shopName} – {option.price} kr
+                      </div>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="packing-summary">
+            <p>
+              <strong>Total weight:</strong> {totalWeight} g
+            </p>
+            <p>
+              <strong>Total cheapest price:</strong> {totalCheapestPrice} kr
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
 }
