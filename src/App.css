@@ -1,14 +1,40 @@
-h1 {
-  display: flex;
-  justify-content: center;
-  margin: 30px;
-  color: navy;
-}
-
-body {
+.container {
   background-color: beige;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-ul {
+.page-title {
+  text-align: center;
+  background-color: whitesmoke;
+  font-size: 3rem;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.left {
+  flex: 1;
+  max-width: 50%;
+  padding-left: 2rem;
+}
+
+.right {
+  flex: 1;
+  max-width: 50%;
+  border-left: 2px solid #ddd;
+  padding-left: 1rem;
+}
+
+.trip-item {
+  cursor: pointer;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
   color: darkorchid;
+}
+
+.trip-item:hover {
+  background-color: #f9f9f9;
 }
