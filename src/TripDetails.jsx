@@ -5,7 +5,7 @@ export default function TripDetails({ tripId }) {
   const [trip, setTrip] = useState(null);
 
   useEffect(() => {
-    fetch(`https://tripapi.cphbusinessapps.dk/api/trips/${tripId}`)
+    fetch(`/api/trips/${tripId}`)
       .then((response) => response.json())
       .then((data) => setTrip(data))
       .catch((error) => console.error("Error fetching trip details:", error));

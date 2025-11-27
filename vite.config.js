@@ -11,6 +11,10 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      "/packinglist": {
+        target: "https://packingapi.cphbusinessapps.dk",
+        changeOrigin: true,
+      },
     },
   },
 });
